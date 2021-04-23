@@ -42,7 +42,7 @@ func setupEnvironment() error {
 func TestNetwork(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 300*time.Second)
 	defer cancel()
-	defer resources.Cleanup(ctx)
+	defer resources.DeleteGroup(ctx, config.BaseGroupName())
 
 	_, err := resources.CreateGroup(ctx, config.BaseGroupName())
 	if err != nil {
